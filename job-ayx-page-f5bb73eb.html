@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>ayx · 产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f2f4f6;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 1.8rem 1rem 3rem;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* hero 区 — 克制，有呼吸感 */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.5rem 2rem 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #111827;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #5b6878;
+      border-left: 3px solid #b0c1d0;
+      padding-left: 1rem;
+      margin: 1rem 0 1.5rem;
+      font-style: normal;
+    }
+
+    .hero .sub strong {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    .summary {
+      background: #eef1f4;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      font-size: 0.95rem;
+      color: #1f2a3a;
+      border: 1px solid #dce2e8;
+      margin-bottom: 0;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      flex: 1 1 280px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e4e9ef;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3::before {
+      content: "▹";
+      color: #8495a8;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #2d3a4c;
+      line-height: 1.65;
+    }
+
+    .card .highlight {
+      background: #f0f4f9;
+      display: inline-block;
+      padding: 0.1rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #1e3a5f;
+      border: 1px solid #d2dde8;
+      margin-top: 0.6rem;
+    }
+
+    /* 提示场景 */
+    .section-title {
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: #121c2b;
+      margin: 2rem 0 0.8rem;
+      letter-spacing: -0.01em;
+    }
+
+    .scene-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .scene-item {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #e0e6ee;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .scene-item .marker {
+      font-size: 1rem;
+      color: #7b8da0;
+      min-width: 1.4rem;
+    }
+
+    .scene-item .content {
+      flex: 1;
+    }
+
+    .scene-item .content strong {
+      font-weight: 500;
+      color: #1a2a3f;
+    }
+
+    .scene-item .content p {
+      font-size: 0.9rem;
+      color: #374151;
+      margin-top: 0.15rem;
+    }
+
+    /* FAQ 摘要 — 更轻 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+      margin-bottom: 2rem;
+    }
+
+    .faq-mini h4 {
+      font-weight: 500;
+      color: #0b1a2e;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .faq-mini .faq-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #edf1f6;
+    }
+
+    .faq-mini .faq-row:last-child {
+      border-bottom: none;
+    }
+
+    .faq-mini .faq-q {
+      min-width: 5rem;
+      font-size: 0.88rem;
+      color: #607080;
+      font-weight: 400;
+    }
+
+    .faq-mini .faq-a {
+      font-size: 0.9rem;
+      color: #1f2a3c;
+      line-height: 1.5;
+    }
+
+    .faq-mini .faq-a a {
+      color: #2b4a6e;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7c9db;
+      transition: border-color 0.15s;
+    }
+
+    .faq-mini .faq-a a:hover {
+      border-bottom-color: #1f3a57;
+    }
+
+    .footnote {
+      text-align: center;
+      color: #6d7b8c;
+      font-size: 0.8rem;
+      border-top: 1px solid #dce1e8;
+      padding-top: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .footnote a {
+      color: #2f4b6a;
+      text-decoration: none;
+    }
+
+    .footnote a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式修正 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.8rem 2rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero {
+        padding: 1.6rem 1.2rem;
+      }
+      .card {
+        flex: 1 1 100%;
+        padding: 1.4rem 1.2rem;
+      }
+      .scene-item {
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: 1rem 1.2rem;
+      }
+      .scene-item .marker {
+        min-width: auto;
+      }
+      .faq-mini {
+        padding: 1.2rem 1.2rem;
+      }
+      .faq-mini .faq-row {
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: 0.6rem 0;
+      }
+      .faq-mini .faq-q {
+        min-width: auto;
+        font-weight: 500;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- hero 摘要 -->
+  <div class="hero">
+    <h1>ayx · 产品摘要</h1>
+    <div class="sub">
+      <strong>ayx</strong> 是一个围绕信息聚合与轻量服务的定位而构建的平台。它并不追求大而全，而是尝试在内容呈现与使用路径之间找到一种相对克制的平衡。以下从几个侧面说明它的设计思路与适用场景。
+    </div>
+    <div class="summary">
+      核心逻辑：通过模块化的信息结构，让使用者能够较快地定位到与自己相关的主题。不依赖强算法推荐，强调用户自主选择。内容侧重点偏向于实用信息与工具型页面，整体风格偏安静。
+    </div>
+  </div>
+
+  <!-- 亮点卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <h3>结构清晰</h3>
+      <p>页面层级与分类比较明确，每个区块承担独立的叙述功能。无论是浏览还是回溯，都不容易迷失在信息堆叠中。</p>
+      <span class="highlight">导航路径短</span>
+    </div>
+    <div class="card">
+      <h3>低干扰呈现</h3>
+      <p>没有悬浮弹窗、自动播放的媒体或频繁的强推送，页面元素以文本与卡片为主，视觉注意力可以自主分配。</p>
+      <span class="highlight">适合沉浸阅读</span>
+    </div>
+    <div class="card">
+      <h3>渐进式引导</h3>
+      <p>引导方式相对间接，通过内容本身的逻辑关系带出下一步。使用者可以在不被打断的情况下探索更多页面。</p>
+      <span class="highlight">探索节奏自控</span>
+    </div>
+  </div>
+
+  <!-- 使用建议（场景） -->
+  <h2 class="section-title">可能适合的场景</h2>
+  <div class="scene-list">
+    <div class="scene-item">
+      <div class="marker">01</div>
+      <div class="content">
+        <strong>常规信息查阅</strong>
+        <p>当需要快速了解某个主题的模块化介绍，且不希望被广告或无关信息干扰时，<a href="https://job-ayx.com.cn">ayx</a> 的页面结构提供了一个相对专注的入口。各分区之间没有强绑定，可以跳跃阅读。</p>
+      </div>
+    </div>
+    <div class="scene-item">
+      <div class="marker">02</div>
+      <div class="content">
+        <strong>内容参考与对比</strong>
+        <p>如果你在做一些简单的调研或对比，<a href="https://job-ayx.com.cn">ayx</a> 的卡片化呈现方式能让不同条目之间的差异更直观。建议使用桌面浏览器访问，多列布局的信息密度更高。</p>
+      </div>
+    </div>
+    <div class="scene-item">
+      <div class="marker">03</div>
+      <div class="content">
+        <strong>轻量工具使用</strong>
+        <p>部分页面内嵌了小型功能模块（如查询、筛选或简易计算），不需要安装额外环境。注意：这些工具以辅助为主，不适合大规模数据处理。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 — 自然嵌链接 -->
+  <div class="faq-mini">
+    <h4>几个常见问题 · 摘要</h4>
+    <div class="faq-row">
+      <div class="faq-q">是否需要注册？</div>
+      <div class="faq-a">浏览大多数内容不需要注册。某些需要保存进度或个性化设置的区域会提示登录，但频率不高。你可以在 <a href="https://job-ayx.com.cn">ayx</a> 首页了解具体哪些模块需要账户。</div>
+    </div>
+    <div class="faq-row">
+      <div class="faq-q">内容更新频率？</div>
+      <div class="faq-a">核心页面保持相对稳定，信息类板块会跟随实际变化做修订，但不会每天大量刷新。建议隔一段时间再回来看看，或许会有细微调整。</div>
+    </div>
+    <div class="faq-row">
+      <div class="faq-q">移动端适配如何？</div>
+      <div class="faq-a">页面适配了常用屏幕尺寸，但部分复杂表格或并排卡片在窄屏上会堆叠为纵向，可读性不受影响。如果追求最佳布局体验，平板或桌面浏览器会更从容。</div>
+    </div>
+  </div>
+
+  <!-- 提示区 — 可信但克制的说明 -->
+  <div style="background: #f8fafc; border-radius: 20px; padding: 1.2rem 1.5rem; border: 1px solid #dde3ec; margin-bottom: 1.5rem; font-size: 0.9rem; color: #2c3d55;">
+    <p style="margin-bottom: 0.3rem;"><strong>说明</strong>：以上描述基于页面本身的结构与功能特性，不构成任何形式的承诺或保证。不同使用者可能有不同的体验，建议根据自身需求判断。所有外部链接指向 <a href="https://job-ayx.com.cn">ayx</a> 相关页面，内容以其实际展示为准。</p>
+  </div>
+
+  <div class="footnote">
+    <span>— 关于 </span><a href="https://job-ayx.com.cn">ayx</a><span> · 产品说明页 · 内容定期回顾 —</span>
+  </div>
+</div>
+</body>
+</html>
